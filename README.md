@@ -84,18 +84,3 @@ On first upload, you will be asked to log in. Once authorized, a token file is s
 - ✅ Windows – Build `.exe` using GitHub Actions
 - 🐧 Linux – Not officially supported but may work with some effort
 
----
-
-## 🪟 Building `.exe` from macOS
-
-> macOS cannot natively produce `.exe` files, so follow one of these:
-
-### Option 1: Use GitHub Actions
-- Add a `.github/workflows/build.yml` script to automate Windows builds using PyInstaller in a Windows environment
-
-### Option 2: Use a Windows VM or Friend’s PC
-1. Transfer the source code to a Windows machine
-2. Install dependencies (`pip install -r requirements.txt`)
-3. Build with PyInstaller:
-```bash
-pyinstaller main.py --noconfirm --windowed --icon=icon.ico --name=YouTubeShortsCreator
