@@ -1,40 +1,101 @@
-# 📺 YouTube Shorts Creator
+# 🎬 YouTube Shorts Creator – Intelligent AI-Powered Video Automation
 
-**AI-powered desktop app for converting long-form videos into engaging, platform-optimized short clips.**  
-Designed for YouTube Shorts, TikTok, and Instagram Reels creators.
-
----
-
-## ✨ Features
-
-- 🎙️ AI Narration using OpenAI + Deepgram  
-- ✂️ GPT-powered Segmentation – automatic clip generation from transcript  
-- 📐 Platform Presets – resize for Shorts, TikTok, Instagram Reels  
-- 🎞️ Intro clip merging – boost branding with pre-roll  
-- 🧠 Auto Title/Description/Tags using ChatGPT  
-- 📤 YouTube Uploader – batch upload, scheduling, thumbnail selection  
-- 🧪 Audio Preview Player with voice model selection  
-- 💾 Persistent Settings — remembers your preferences  
-- 🌙 Light/Dark Theme toggle  
-- 🎧 Audio Ducking Levels — Light / Medium / Strong  
-- 📁 Bulk Downloader for managing source content  
-- 🧰 Raw Editor tab with threaded exporting  
-- ⚡ Concurrent GPT, Audio & Thumbnail generation
+YouTube Shorts Creator is a fully offline, desktop-based tool designed for content creators who want to produce viral-ready short-form videos (YouTube Shorts, TikToks, Instagram Reels) using AI-powered tools.
 
 ---
 
-## 📦 Download
+## 💡 What It Does
 
-The latest macOS version is available here:
-
-<a href="https://github.com/ComebackRay123/Youtube-Shorts-Creator-/releases/download/v1.0.0/YouTubeShortsCreator.zip">
-  <img src="https://img.shields.io/badge/Download%20macOS-%20YouTubeShortsCreator.app-blue?style=for-the-badge&logo=apple" alt="Download for macOS">
-</a>
+This app takes your full-length videos and intelligently:
+- Extracts the most engaging segments using GPT-powered analysis
+- Automatically generates a matching voice narration using Deepgram
+- Optionally overlays your own or AI-generated audio
+- Adjusts audio levels with ducking to ensure voice clarity
+- Resizes and formats videos based on your target platform
+- Adds optional intro clips for branding
+- Lets you preview the audio using different AI voices
+- Allows you to batch-upload directly to your YouTube channel with thumbnails and scheduled publishing
+- Includes a bulk downloader for managing your video sources
 
 ---
 
-## 🧰 Requirements
+## 🔧 Who This Is For
 
-- macOS with Python 3.9+  
-- FFmpeg installed and added to PATH  
-- Dependencies: `PyQt6`, `moviepy`, `openai`, `deepgram-sdk`, `whisper`, `yt-dlp`, `torch`
+This is for creators, marketers, educators, and influencers who:
+- Want to rapidly generate YouTube Shorts or TikToks from long videos
+- Don’t want to manually cut, narrate, and upload each segment
+- Prefer a local tool over web platforms for privacy, speed, or reliability
+- Use Windows or macOS and prefer GUI-based control
+
+---
+
+## 🚀 Features Overview
+
+- ✅ **GPT-based Smart Segmentation** – Extracts key moments based on your custom prompt and target duration
+- ✅ **AI Narration with Deepgram** – Natural-sounding voiceover with tone control (serious, fun, chill, etc.)
+- ✅ **Intro Clip Support** – Add your own intro to every video
+- ✅ **Audio Ducking** – Automatically lowers background music volume during narration
+- ✅ **Format Presets** – Export to YouTube Shorts, TikTok, Instagram, or custom aspect ratios
+- ✅ **Audio Preview Player** – Hear narration before generating final output
+- ✅ **Batch YouTube Uploader** – Upload videos with titles, tags, descriptions, thumbnails, and scheduling
+- ✅ **Dark/Light Theme Toggle** – Remembered across sessions
+- ✅ **Drag & Drop Friendly** – Just drop your video and start
+
+---
+
+## 🔐 Required API Keys
+
+Before using the AI features, you need to provide two API keys. These are stored securely and reused automatically.
+
+### 1. OpenAI API Key
+- Used for: GPT-based script generation, segment analysis, title and tag generation
+- Get it from: https://platform.openai.com/account/api-keys
+
+### 2. Deepgram API Key
+- Used for: Text-to-speech voice narration
+- Get it from: https://console.deepgram.com/signup
+
+---
+
+## 📤 YouTube Auto Upload (OAuth Setup Required)
+
+To enable automatic YouTube uploading:
+
+### You’ll Need:
+- A `client_secret.json` file from Google Cloud Console
+
+### How to Get It:
+1. Visit: https://console.cloud.google.com/
+2. Create a new project
+3. Enable the **YouTube Data API v3**
+4. Go to **APIs & Services > Credentials**
+5. Create an **OAuth 2.0 Client ID**
+   - Type: **Desktop app**
+6. Download the credentials JSON file and rename it to:
+7. Place it in the app’s root folder (beside the executable or main.py)
+
+On first upload, you will be asked to log in. Once authorized, a token file is saved so future uploads are automatic.
+
+---
+
+## 🖥️ Platform Support
+
+- ✅ macOS – Comes with a ready-to-run `.app` (download from [Releases](https://github.com/ComebackRay123/Youtube-Shorts-Creator-/releases))
+- ✅ Windows – Build `.exe` using GitHub Actions
+- 🐧 Linux – Not officially supported but may work with some effort
+
+---
+
+## 🪟 Building `.exe` from macOS
+
+> macOS cannot natively produce `.exe` files, so follow one of these:
+
+### Option 1: Use GitHub Actions
+- Add a `.github/workflows/build.yml` script to automate Windows builds using PyInstaller in a Windows environment
+
+### Option 2: Use a Windows VM or Friend’s PC
+1. Transfer the source code to a Windows machine
+2. Install dependencies (`pip install -r requirements.txt`)
+3. Build with PyInstaller:
+```bash
+pyinstaller main.py --noconfirm --windowed --icon=icon.ico --name=YouTubeShortsCreator
